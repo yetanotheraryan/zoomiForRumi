@@ -3,6 +3,9 @@ const videoGrid = document.getElementById('video-grid');
 const myPeer = new Peer()
 
 const myVideo = document.createElement('video')
+myVideo.setAttribute('autoplay', '');
+myVideo.setAttribute('muted', '');
+myVideo.setAttribute('playsinline', '');
 myVideo.muted = true;
 
 const peers={
@@ -18,6 +21,9 @@ navigator.mediaDevices.getUserMedia({
     myPeer.on('call', call=>{
         call.answer(stream)
         const video = document.createElement('video')
+        video.setAttribute('autoplay', '');
+        video.setAttribute('muted', '');
+        video.setAttribute('playsinline', '');
         call.on('stream', userVedioStream=>{
             addVideoStream(video, userVedioStream)
         })
@@ -56,6 +62,9 @@ function addVideoStream(video, stream){
 function connectToNewUser(userId, stream){
     const call = myPeer.call(userId, stream);
     const video = document.createElement('video');
+    video.setAttribute('autoplay', '');
+    video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
     call.on('stream', userVideoStream =>{
         addVideoStream(video,userVideoStream);
     })
